@@ -1,0 +1,37 @@
+{
+  "name": "blogging-application",
+  "version": "1.0.0",
+  "description": "Blog application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karman0068/Blogging-application-.git"
+  },
+  "keywords": [
+    "blog",
+    "blogging",
+    "application",
+    "express",
+    "nodeJS",
+    "ejs"
+  ],
+  "author": "karman0068",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Karman0068/Blogging-application-/issues"
+  },
+  "homepage": "https://github.com/Karman0068/Blogging-application-#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
