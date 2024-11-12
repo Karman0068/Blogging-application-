@@ -1,8 +1,7 @@
-
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
 
 const Blog = require("./models/blog");
 
@@ -11,29 +10,29 @@ const blogRoute = require("./routes/blog");
 const { checkForAuthenticationCookie } = require("./middlewares/authentication");
 
 const app = express();
-const PORT = 8000;
 
 mongoose.connect("mongodb+srv://karman0068:nsWDyynLEKjlRkaj@cluster0.6ptgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-.then((e)=>console.log("MongoDB Connected"));
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.error("MongoDB connection error:", err));
 
-app.set("view engine","ejs");
-app.set("views",path.resolve("./views"));
+app.set("view engine", "ejs");
+app.set("views", path.resolve("./views"));
 
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 app.use(express.static(path.resolve("./public")));
 
-app.get("/" , async(req,res)=>{
+app.get("/", async (req, res) => {
     const allBlogs = await Blog.find({}).sort("createdAt");
     
-    res.render("home" , {
-        user:req.user,
+    res.render("home", {
+        user: req.user,
         blogs: allBlogs
     });
 });
 
-app.use("/user" , userRoute);
-app.use("/blog" , blogRoute);
+app.use("/user", userRoute);
+app.use("/blog", blogRoute);
 
-app.listen(PORT,()=>console.log(`Server atarted at PORT:${PORT}`));
+module.exports = app;
