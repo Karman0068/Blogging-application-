@@ -13,7 +13,7 @@ const { checkForAuthenticationCookie } = require("./middlewares/authentication")
 const app = express();
 const PORT = 8000;
 
-mongoose.connect("mongodb://localhost:27017/blogify")
+mongoose.connect("mongodb+srv://karman0068:nsWDyynLEKjlRkaj@cluster0.6ptgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 .then((e)=>console.log("MongoDB Connected"));
 
 app.set("view engine","ejs");
